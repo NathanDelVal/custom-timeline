@@ -1,0 +1,270 @@
+<style>
+    #timeline-container,
+    #timeline-container * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #timeline-container {
+        width: 100%;
+        height: 300px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    #timeline-container::-webkit-scrollbar {
+        height: 8px;
+        background: #EFEFF1;
+        -webkit-border-radius: 4px;
+        border-radius: 4px
+    }
+
+    #timeline-container::-webkit-scrollbar {
+        height: 8px;
+        background: #EFEFF1;
+        -webkit-border-radius: 4px;
+        border-radius: 4px
+    }
+
+    #timeline-container::-webkit-scrollbar-button {
+        width: 0;
+        height: 0
+    }
+
+    #timeline-container::-webkit-scrollbar-thumb {
+        background-color: #34314B;
+        border: none;
+        -webkit-border-radius: 4px;
+        border-radius: 4px
+    }
+
+    #timeline-container::-webkit-scrollbar-track {
+        border: none;
+        background: transparent
+    }
+
+    #timeline-container::-webkit-scrollbar-corner {
+        background: transparent
+    }
+
+    #timeline-container #timeline {
+        width: 150%;
+        height: 100%;
+        position: relative;
+    }
+
+    #timeline-container #timeline #line {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        background: #ecf3ff;
+        border-radius: 20px;
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        top: 50px;
+        transform: translateY(-50%);
+        margin: 0;
+    }
+
+    #timeline-container .points {
+        width: 20px;
+        height: 20px;
+        background: rgb(64, 84, 160);
+        border: 5px solid white;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        outline: 1px solid #ecf3ff;
+        position: relative;
+    }
+
+    #timeline-container .dialog-box {
+        width: 220px;
+        padding: 10px;
+        border: 2px solid #ecf3ff;
+        transform: translate(-50%, 40px);
+        text-align: center;
+        background: #ecf3ff;
+        color: white;
+        border-radius: 20px;
+        box-shadow: 0 0 20px 5px gray;
+        position: relative;
+    }
+
+    #timeline-container .dialog-box p {
+        color: darkgray;
+    }
+
+    #timeline-container .dialog-box::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: -10px;
+        right: calc(50% - 2.5px);
+        background: #ecf3ff;
+        transform: rotate(45deg) translate(50%, -50%);
+    }
+
+    #timeline-container .time {
+        position: absolute;
+        top: -40px;
+        transform: translateX(calc(-50% + 5px));
+        color: #ecf3ff;
+    }
+
+    @media screen and (max-width: 1023px) {
+
+        #timeline-container {
+            height: 150vh;
+            overflow: hidden;
+        }
+
+        #timeline-container #timeline {
+            width: 100%;
+            height: 100%;
+        }
+
+        #timeline-container #timeline #line {
+            width: 3px;
+            height: 150vh;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    @media screen and (min-width:768px) and (max-width:1023px) {
+
+        #timeline-container .points:nth-of-type(odd) .dialog-box {
+            transform: translate(30%, -50%);
+        }
+
+        #timeline-container .points:nth-of-type(even) .dialog-box {
+            transform: translate(-130%, -50%);
+        }
+
+        #timeline-container .points:nth-of-type(odd) .dialog-box::after {
+            left: -10px;
+            top: calc(50% - 10px);
+            transform: rotate(45deg);
+
+        }
+
+        #timeline-container .points:nth-of-type(even) .dialog-box::after {
+            right: -10px;
+            top: calc(50% - 10px);
+            transform: rotate(45deg);
+
+        }
+
+        #timeline-container .time {
+            top: -0.5rem;
+        }
+
+        #timeline-container .points:nth-of-type(odd) .time {
+            transform: translateX(calc(-100% - 20px));
+        }
+
+        #timeline-container .points:nth-of-type(even) .time {
+            transform: translateX(calc(100% - 20px));
+        }
+    }
+
+    @media screen and (min-width:768px) {
+        .inner-time {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+
+        #timeline-container,
+        #timeline-container #line {
+            height: 175vh !important;
+        }
+
+        #timeline-container .time,
+        #timeline-container .dialog-box::after {
+            display: none;
+        }
+
+        #timeline-container .points {
+            background: none !important;
+            border: none !important;
+            outline: none !important;
+        }
+
+        #timeline-container .dialog-box {
+            width: 300px;
+        }
+
+        #timeline-container .points:nth-of-type(3) .dialog-box {
+            bottom: -50px;
+        }
+
+        .inner-time {
+            color: white;
+            background: #4054a0;
+            border-radius: 20px 20px 0 0;
+            padding: 5px !important;
+            width: calc(100% + 24px);
+            transform: translate(-12px, -12px);
+        }
+    }
+</style>
+<div id="timeline-container">
+    <div id="timeline">
+        <div id="line">
+            <div class="points">
+                <h3 class="time">1992</h3>
+                <div class="dialog-box">
+                    <h3 class="inner-time">1992</h3>
+                    <p>- Começou na vida pública como secretário municipal</p>
+                </div>
+            </div>
+            <div class="points">
+                <h3 class="time">2001</h3>
+                <div class="dialog-box">
+                    <h3 class="inner-time">2001</h3>
+                    <p>- Assumiu como prefeito em Campos Verdes <br> <br>
+                        - Ganhou o prêmio Sebrae Prefeito Empreendedor e o prêmio Boas Práticas Administrativas da
+                        ONU
+                    </p>
+                </div>
+            </div>
+            <div class="points">
+                <h3 class="time">2012</h3>
+                <div class="dialog-box">
+                    <h3 class="inner-time">2012</h3>
+                    <p>- Eleito vice-presidente da ABM
+                    </p>
+                </div>
+            </div>
+            <div class="points">
+                <h3 class="time">2016</h3>
+                <div class="dialog-box">
+                    <h3 class="inner-time">2016</h3>
+                    <p>- Reeleito prefeito de Campos Verdes</p>
+                    <br>
+                    <p>- Eleito presidente da FGM</p>
+                </div>
+            </div>
+            <div class="points">
+                <h3 class="time">2018</h3>
+                <div class="dialog-box">
+                    <h3 class="inner-time">2018</h3>
+                    <p>- Tomou posse como vice-presidente da CNM</p>
+                </div>
+            </div>
+            <div class="points">
+                <h3 class="time">2021</h3>
+                <div class="dialog-box">
+                    <h3 class="inner-time">2021</h3>
+                    <p>- Reeleito vice-presidente da CNM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
